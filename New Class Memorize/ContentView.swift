@@ -10,81 +10,39 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack{
-            ZStack{
-                ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
-                      //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
-                    RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor(.white)
-                    RoundedRectangle(cornerRadius: 50)
-                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                    Text("💩").font(.largeTitle)
-                })
-                ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
-                    //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
-                  RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.white)
-                  RoundedRectangle(cornerRadius: 50)
-                      .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                  Text("💩").font(.largeTitle)
-              })
-                ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
-                    //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
-                  RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.white)
-                  RoundedRectangle(cornerRadius: 50)
-                      .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                  Text("💩").font(.largeTitle)
-              })
-                ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
-                    //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
-                  RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.white)
-                  RoundedRectangle(cornerRadius: 50)
-                      .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                  Text("💩").font(.largeTitle)
-              })
-            }
             HStack{
-                ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
-                      //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
-                    RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor(.yellow)
-                    RoundedRectangle(cornerRadius: 50)
-                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                    Text("💩").font(.largeTitle)
-                })
-                ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
-                    //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
-                  RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.orange)
-                  RoundedRectangle(cornerRadius: 50)
-                      .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                  Text("💩").font(.largeTitle)
-              })
-                ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
-                    //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
-                  RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.red)
-                  RoundedRectangle(cornerRadius: 50)
-                      .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                  Text("💩").font(.largeTitle)
-              })
-                ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
-                    //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
-                  RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.pink )
-                  RoundedRectangle(cornerRadius: 50)
-                      .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                  Text("💩").font(.largeTitle)
-              })
+                CardView(isFaceUp: true)
+                CardView()
+                CardView()
+                CardView()
+                CardView()
+                
+                
             }
+  
         }
-        
-        
-        
         .foregroundColor(.blue)
-        .imageScale(.small)
         .padding()
+    }
+}
+
+struct CardView : View {
+    
+    var isFaceUp : Bool = false
+    var body: some View {
+        ZStack(content: {
+            if isFaceUp {
+            
+                RoundedRectangle(cornerRadius: 50)
+                    .foregroundColor(.white)
+                RoundedRectangle(cornerRadius: 50)
+                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
+                Text("💩").font(.largeTitle)
+        }else{
+            RoundedRectangle(cornerRadius: 50)
+                .foregroundColor(.orange)
+        }
+        })
     }
 }
 
