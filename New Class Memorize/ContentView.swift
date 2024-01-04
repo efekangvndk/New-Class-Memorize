@@ -40,7 +40,7 @@ struct CardView : View {
                 Text("💩").font(.largeTitle)
         }else{
             RoundedRectangle(cornerRadius: 50)
-                .foregroundColor(.orange)
+                .foregroundColor(.blue)
         }
         })
     }
