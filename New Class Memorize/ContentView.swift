@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack{
-            HStack{
+            ZStack{
                 ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
                       //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
                     RoundedRectangle(cornerRadius: 50)
@@ -48,7 +48,7 @@ struct ContentView: View {
                 ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
                       //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
                     RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor(.white)
+                        .foregroundColor(.yellow)
                     RoundedRectangle(cornerRadius: 50)
                         .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
                     Text("💩").font(.largeTitle)
@@ -56,7 +56,7 @@ struct ContentView: View {
                 ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
                     //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
                   RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.white)
+                      .foregroundColor(.orange)
                   RoundedRectangle(cornerRadius: 50)
                       .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
                   Text("💩").font(.largeTitle)
@@ -64,7 +64,7 @@ struct ContentView: View {
                 ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
                     //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
                   RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.white)
+                      .foregroundColor(.red)
                   RoundedRectangle(cornerRadius: 50)
                       .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
                   Text("💩").font(.largeTitle)
@@ -72,7 +72,7 @@ struct ContentView: View {
                 ZStack (content: { //ZStack olursa iç içe Vstack olursa alt üst HStack olursa yan yana
                     //burdan sonra eğer imagename dersek Assetlerden bir görünüm alır ve öyle gelir
                   RoundedRectangle(cornerRadius: 50)
-                      .foregroundColor(.white)
+                      .foregroundColor(.pink )
                   RoundedRectangle(cornerRadius: 50)
                       .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
                   Text("💩").font(.largeTitle)
