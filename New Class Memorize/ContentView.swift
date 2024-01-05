@@ -33,7 +33,7 @@ struct CardView : View {
     var isFaceUp : Bool = false         // Bool : true veya false için bir parametredir. Bu şekilde kısa yoldan if else yerine kullanarız.
     var body: some View {
         ZStack{                         // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
-            if isFaceUp {                                       // Bu karşmaşık olay bize mi dönük yoksa arkası mı dönük anlamındadır.
+            if isFaceUp {                                       // Bu isFaceUp parametre bize mi dönük yoksa arkası mı dönük anlamındadır.
                 ZStack(alignment: .top, content: {              // Üstlü altı demek.
                     RoundedRectangle(cornerRadius: 10)          // Kenear Yuvarlaklığı için
                         .fill(LinearGradient(                   // Cisimler için (kare daire v.b)içini doldur demek
