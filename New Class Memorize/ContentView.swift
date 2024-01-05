@@ -14,7 +14,7 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
                 
                 CardView(isFaceUp: false)                      // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
                 CardView(isFaceUp: true)
-                CardView(isFaceUp: false)
+
                 
             }
             
@@ -35,7 +35,7 @@ struct CardView : View {
         ZStack{                         // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
             if isFaceUp {                                       // Bu karşmaşık olay bize mi dönük yoksa arkası mı dönük anlamındadır.
                 ZStack(alignment: .top, content: {              // Üstlü altı demek.
-                    RoundedRectangle(cornerRadius: 50)          // Kenear Yuvarlaklığı için
+                    RoundedRectangle(cornerRadius: 10)          // Kenear Yuvarlaklığı için
                         .fill(LinearGradient(                   // Cisimler için (kare daire v.b)içini doldur demek
                             gradient: Gradient(colors: [.red, .pink, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
                             startPoint: .bottom,                                                 // Yaparken işimize yara.
@@ -44,9 +44,10 @@ struct CardView : View {
                         .foregroundColor(.black)                // Arkaplan rengi
                     Text("Hello").font(.largeTitle)             // .font size ayarı
                         .foregroundColor(.pink)
-                        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.white))
-                    RoundedRectangle(cornerRadius: 50)
+                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.black))
+                    RoundedRectangle(cornerRadius: 10)
                         .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))          // Açılan küçük çizgi ayarları.
+                        .foregroundColor(.black)
                     
                 })
                 
@@ -56,7 +57,7 @@ struct CardView : View {
                         .foregroundColor(.purple)                // Burada kullandığımız foregroundColor text gibi cisimleri alır
                     Text("Merhaba").font(.title)                 // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
                         .foregroundColor(.white)
-                        .rotationEffect(Angle(degrees: 50))
+                        .rotationEffect(Angle(degrees: 90))
                         .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black)) // yazının arka planı düşünülür. ve aynı zaman eğimli
                     RoundedRectangle(cornerRadius: 50)
                         .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
