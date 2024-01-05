@@ -11,13 +11,8 @@ struct ContentView: View {
     var body: some View {
         VStack{
             HStack{
-                CardView(isFaceUp: true)
-                CardView(isFaceUp: true)
-                CardView(isFaceUp: true)
-                CardView(isFaceUp: true)
-                CardView(isFaceUp: true)
-                
-                
+                CardView()
+             
             }
   
         }
@@ -30,34 +25,23 @@ struct CardView : View {
     
     var isFaceUp : Bool = false
     var body: some View {
-        VStack(content: {
-            if isFaceUp {
-                ZStack{
-                    HStack{
-                        RoundedRectangle(cornerRadius: 50)
-                            .foregroundColor(.white)
-                        RoundedRectangle(cornerRadius: 50)
-                            .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                        Text("💩").font(.largeTitle)
-                    }
+        HStack(content: {
+              
+                       
                     RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                     RoundedRectangle(cornerRadius: 50)
                         .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                    Text("💩").font(.largeTitle)
-                }
-                RoundedRectangle(cornerRadius: 50)
-                    .foregroundColor(.white)
-                RoundedRectangle(cornerRadius: 50)
-                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                Text("💩").font(.largeTitle)
-        }else{
-            RoundedRectangle(cornerRadius: 50)
-                .foregroundColor(.orange)
-        }
+            Text("Hello").font(.largeTitle)
+                
+                    
+ 
+        
         })
     }
 }
+
+
 
 #Preview {
     ContentView()
