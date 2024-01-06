@@ -14,17 +14,20 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
                 
                 CardView(isFaceUp: false)                      // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
                 CardView(isFaceUp: true)
-
+                SecCardView(isFaceDown: true)                    // Örneklenmeyi çağaltmak için yaprım.
+                SecCardView(isFaceDown: false)
+                
                 
             }
-            
         }
+        
         .foregroundColor(.black)
         .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))                   // Boşluk bırakmak ve detay.
+        
     }
 }
 
-                                        /// --- Öğrenim herne oluşturduysak onun modifiye için altına uygun methodu yazmak yeterli.
+/// --- Öğrenim herne oluşturduysak onun modifiye için altına uygun methodu yazmak yeterli.
 
 
 
@@ -35,39 +38,81 @@ struct CardView : View {
         ZStack{                         // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
             if isFaceUp {                                       // Bu isFaceUp parametre bize mi dönük yoksa arkası mı dönük anlamındadır.
                 ZStack(alignment: .top, content: {              // Üstlü altı demek.
-                    RoundedRectangle(cornerRadius: 10)          // Kenear Yuvarlaklığı için
-                        .fill(LinearGradient(                   // Cisimler için (kare daire v.b)içini doldur demek
-                            gradient: Gradient(colors: [.red, .pink, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
-                            startPoint: .bottom,                                                 // Yaparken işimize yara.
-                            endPoint: .top
+                    let base :  RoundedRectangle = RoundedRectangle(cornerRadius: 10)            // Kenear Yuvarlaklığı için
+                    base.fill(LinearGradient(                   // Cisimler için (kare daire v.b)içini doldur demek
+                    gradient: Gradient(colors: [.red, .pink, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
+                    startPoint: .bottom,                                                 // Yaparken işimize yara.
+                    endPoint: .top
                                             ))
-                        .foregroundColor(.black)                // Arkaplan rengi
+                    .foregroundColor(.black)                    // Arkaplan rengi
                     Text("Hello").font(.largeTitle)             // .font size ayarı
-                        .foregroundColor(.pink)
-                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.black))
+                    .foregroundColor(.pink)
+                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.black))
                     RoundedRectangle(cornerRadius: 10)
-                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))          // Açılan küçük çizgi ayarları.
-                        .foregroundColor(.black)
+                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))     // Açılan küçük çizgi ayarları.
+                    .foregroundColor(.black)
                     
                 })
                 
             }else{
                 ZStack(alignment: .center, content :{
                     RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor(.purple)                // Burada kullandığımız foregroundColor text gibi cisimleri alır
+                    .foregroundColor(.purple)                    // Burada kullandığımız foregroundColor text gibi cisimleri alır
                     Text("Merhaba").font(.title)                 // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
-                        .foregroundColor(.white)
-                        .rotationEffect(Angle(degrees: 90))
-                        .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black)) // yazının arka planı düşünülür. ve aynı zaman eğimli
+                    .foregroundColor(.white)
+                    .rotationEffect(Angle(degrees: 90))
+                    .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black)) // yazının arka planı düşünülür. ve aynı zaman eğimli
                     RoundedRectangle(cornerRadius: 50)
-                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                        .foregroundColor(.red)
+                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
+                    .foregroundColor(.red)
                 })
             }
         }
     }
 }
 
+struct SecCardView : View {
+    
+    var isFaceDown : Bool = false
+    var body: some View {
+        ZStack{
+            if isFaceDown {
+                ZStack(alignment: .center, content: {
+                    
+                    let base2 = Circle()  // Üst kısım ile arasındaki fark birine direk tanım diğerinde otomatik bırakdık.
+                    base2.fill(LinearGradient(
+                    gradient: Gradient(colors: [.red, .pink, .purple, .white, ]),
+                    startPoint: .bottom,
+                    endPoint: .center
+                    ))
+                    
+                    .foregroundColor(.black)
+                    Text("Hello").font(.largeTitle)
+                    .foregroundColor(.black)
+                    Circle()
+                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
+                    
+                })
+                
+            }else{
+                
+                ZStack(alignment: .center, content :{
+                    Circle()
+                    .foregroundColor(.purple)
+                    Text("Heyo").font(.title)
+                    .foregroundColor(.white)
+                    .rotationEffect(Angle(degrees: 90))
+                    .background(RoundedRectangle(cornerRadius: 10))
+                    .foregroundColor(.black)
+                    Circle()
+                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
+                    .foregroundColor(.red)
+                    
+                })
+            }
+        }
+    }
+}
 
 
 #Preview {            // Ön izleme teknik açıdan Canvas
