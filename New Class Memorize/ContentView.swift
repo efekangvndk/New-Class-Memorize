@@ -33,7 +33,7 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
 
 struct CardView : View {
     
-    var isFaceUp : Bool = false         // Bool : true veya false için bir parametredir. Bu şekilde kısa yoldan if else yerine kullanarız.
+    @ State var isFaceUp : Bool = false // Bool : true veya false için bir parametredir. Bu şekilde kısa yoldan if else yerine kullanarız.
     var body: some View {
         ZStack{                         // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
             if isFaceUp {                                       // Bu isFaceUp parametre bize mi dönük yoksa arkası mı dönük anlamındadır.
@@ -68,13 +68,17 @@ struct CardView : View {
                 })
             }
         }
+        .onTapGesture (count : 1, perform: {
+            isFaceUp = !isFaceUp
+             print("Tapped")
+        })
     }
 }
 
 struct SecCardView : View {
     
-    var isFaceDown : Bool = false
-    var body: some View {
+   @State var isFaceDown : Bool = false   // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
+    var body: some View {                 // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
         ZStack{
             if isFaceDown {
                 ZStack(alignment: .center, content: {
@@ -109,13 +113,14 @@ struct SecCardView : View {
                     .foregroundColor(.red)
                     
                 })
-                    .onTapGesture (count : 2, perform: {
-                         print("Tapped")
-                })
             }
         }
+        .onTapGesture (count : 1, perform: {
+            isFaceDown = !isFaceDown
+             print("Tapped")
+            })
+        }
     }
-}
 
 
 #Preview {            // Ön izleme teknik açıdan Canvas
