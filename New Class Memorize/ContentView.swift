@@ -116,7 +116,7 @@ struct SecCardView : View {
             }
         }
         .onTapGesture (count : 1, perform: {
-            isFaceDown = !isFaceDown
+            isFaceDown.toggle()
              print("Tapped")
             })
         }
