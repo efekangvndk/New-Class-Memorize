@@ -109,6 +109,9 @@ struct SecCardView : View {
                     .foregroundColor(.red)
                     
                 })
+                    .onTapGesture (count : 2, perform: {
+                         print("Tapped")
+                })
             }
         }
     }
