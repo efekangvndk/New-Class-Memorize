@@ -102,12 +102,12 @@ struct SecCardView : View {
                 
                 ZStack(alignment: .center, content :{
                     Circle()
-                    .foregroundColor(.purple)
+                    .foregroundColor(.yellow)
                     Text("Heyo").font(.title)
-                    .foregroundColor(.white)
-                    .rotationEffect(Angle(degrees: 90))
-                    .background(RoundedRectangle(cornerRadius: 10))
                     .foregroundColor(.black)
+                    .rotationEffect(Angle(degrees: 45))
+                    .background(RoundedRectangle(cornerRadius: 10))
+                    .foregroundColor(.white)
                     Circle()
                     .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
                     .foregroundColor(.red)
