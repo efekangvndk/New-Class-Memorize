@@ -85,7 +85,7 @@ struct SecCardView : View {
                     
                     let base2 = Circle()  // Üst kısım ile arasındaki fark birine direk tanım diğerinde otomatik bırakdık.
                     base2.fill(LinearGradient(
-                    gradient: Gradient(colors: [.red, .pink, .purple, .white, ]),
+                        gradient: Gradient(colors: [.blue ,.blue, .red, .pink, .purple, .white, ]),
                     startPoint: .bottom,
                     endPoint: .center
                     ))
