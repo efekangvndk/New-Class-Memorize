@@ -15,7 +15,7 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
                 CardView(isFaceUp: false)                      // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
                 CardView(isFaceUp: true)
                 SecCardView(isFaceDown: true)                    // Örneklenmeyi çağaltmak için yaprım.
-                SecCardView(isFaceDown: false)
+                SecCardView(content :"💩" isFaceDown" false )
                 
                 
             }
@@ -76,7 +76,7 @@ struct CardView : View {
 }
 
 struct SecCardView : View {
-    
+    var content : String
    @State var isFaceDown : Bool = false   // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
     var body: some View {                 // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
         ZStack{
