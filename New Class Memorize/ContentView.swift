@@ -12,12 +12,11 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
         VStack{
             HStack{
                 
-                let emeji : Array<String> = ["😈", "🎃","🕷️"]
-                
-                CardView(content2 : emeji[0], isFaceUp : false)                      // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
-                CardView(content2 : emeji[1] , isFaceUp :true)
-                SecCardView(content :"💩" )                    // Örneklenmeyi çağaltmak için yaprım.
-                SecCardView(content :"💩", isFaceDown : true )
+                let emeji : Array<String> = ["😈", "🎃","🕷️","👻"]
+                CardView(content2 : emeji[0], isFaceUp: true)                      // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
+                CardView(content2 : emeji[1] , isFaceUp:true)
+                SecCardView(content : emeji[2], isFaceDown: true)                    // Örneklenmeyi çağaltmak için yaprım.
+                SecCardView(content : emeji[3], isFaceDown: true )
                 
                 
             }
@@ -64,7 +63,7 @@ struct CardView : View {
                 ZStack(alignment: .center, content :{
                     RoundedRectangle(cornerRadius: 50)
                     .foregroundColor(.purple)                    // Burada kullandığımız foregroundColor text gibi cisimleri alır
-                    Text("Merhaba").font(.title)                 // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
+                    Text("Hİ").font(.title)                 // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
                     .foregroundColor(.white)
                     .rotationEffect(Angle(degrees: 90))
                     .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black)) // yazının arka planı düşünülür. ve aynı zaman eğimli
@@ -97,8 +96,11 @@ struct SecCardView : View {
                     ))
                     
                     .foregroundColor(.black)
-                    Text(content).font(.largeTitle)
-                    .foregroundColor(.black)
+                    VStack{
+                        Text(content).font(.largeTitle)
+                        .foregroundColor(.black)
+                        Text("FEAR :D ")
+                    }
                     Circle()
                     .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
                     
