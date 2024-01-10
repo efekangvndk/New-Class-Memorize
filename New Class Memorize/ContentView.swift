@@ -12,10 +12,12 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
         VStack{
             HStack{
                 
-                CardView(isFaceUp: false)                      // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
-                CardView(isFaceUp: true)
-                SecCardView(isFaceDown: true)                    // Örneklenmeyi çağaltmak için yaprım.
-                SecCardView(content :"💩" isFaceDown" false )
+                let emeji : Array<String> = ["😈", "🎃","🕷️"]
+                
+                CardView(content2 : emeji[0], isFaceUp : false)                      // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
+                CardView(content2 : emeji[1] , isFaceUp :true)
+                SecCardView(content :"💩" )                    // Örneklenmeyi çağaltmak için yaprım.
+                SecCardView(content :"💩", isFaceDown : true )
                 
                 
             }
@@ -32,7 +34,7 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
 
 
 struct CardView : View {
-    
+    let content2 : String
     @ State var isFaceUp : Bool = false // Bool : true veya false için bir parametredir. Bu şekilde kısa yoldan if else yerine kullanarız.
     var body: some View {
         ZStack{                         // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
@@ -45,8 +47,12 @@ struct CardView : View {
                     endPoint: .top
                                             ))
                     .foregroundColor(.black)                    // Arkaplan rengi
-                    Text("Hello").font(.largeTitle)             // .font size ayarı
-                    .foregroundColor(.pink)
+                    VStack{
+                        Text(content2).font(.largeTitle)             // .font size ayarı
+                        Text("Booo").font(.largeTitle)
+                            .foregroundColor(.purple)
+                    }
+                   
                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.black))
                     RoundedRectangle(cornerRadius: 10)
                     .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))     // Açılan küçük çizgi ayarları.
@@ -76,7 +82,7 @@ struct CardView : View {
 }
 
 struct SecCardView : View {
-    var content : String
+    let content : String
    @State var isFaceDown : Bool = false   // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
     var body: some View {                 // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
         ZStack{
@@ -91,7 +97,7 @@ struct SecCardView : View {
                     ))
                     
                     .foregroundColor(.black)
-                    Text("Hello").font(.largeTitle)
+                    Text(content).font(.largeTitle)
                     .foregroundColor(.black)
                     Circle()
                     .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
