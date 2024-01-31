@@ -13,11 +13,18 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
             HStack{
                 
                 let emeji : Array<String> = ["😈", "🎃","🕷️","👻"]
-                CardView(content2 : emeji[0], isFaceUp: true)                      // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
-                CardView(content2 : emeji[1] , isFaceUp:true)
-                SecCardView(content : emeji[2], isFaceDown: true)                    // Örneklenmeyi çağaltmak için yaprım.
-                SecCardView(content : emeji[3], isFaceDown: true )
                 
+                /*
+                ForEach(0...4, id : \.self) { index in                   // Bu bölge hatalı ancak video izlendi.
+                 }                                                       //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
+                  */
+                    
+                 
+
+                CardView(content2 : emeji[0], isFaceUp: true)           // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
+                CardView(content2 : emeji[1] , isFaceUp:true)
+                SecCardView(content : emeji[2], isFaceDown: true)       // Örneklenmeyi çağaltmak için yaprım.
+                SecCardView(content : emeji[3], isFaceDown: true )
                 
             }
         }
@@ -36,18 +43,18 @@ struct CardView : View {
     let content2 : String
     @ State var isFaceUp : Bool = false // Bool : true veya false için bir parametredir. Bu şekilde kısa yoldan if else yerine kullanarız.
     var body: some View {
-        ZStack{                         // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
-            if isFaceUp {                                       // Bu isFaceUp parametre bize mi dönük yoksa arkası mı dönük anlamındadır.
-                ZStack(alignment: .top, content: {              // Üstlü altı demek.
+        ZStack{                                                     // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
+            if isFaceUp {                                           // Bu isFaceUp parametre bize mi dönük yoksa arkası mı dönük anlamındadır.
+                ZStack(alignment: .top, content: {                  // Üstlü altı demek.
                     let base :  RoundedRectangle = RoundedRectangle(cornerRadius: 10)            // Kenear Yuvarlaklığı için
-                    base.fill(LinearGradient(                   // Cisimler için (kare daire v.b)içini doldur demek
+                    base.fill(LinearGradient(                       // Cisimler için (kare daire v.b)içini doldur demek
                     gradient: Gradient(colors: [.red, .pink, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
                     startPoint: .bottom,                                                 // Yaparken işimize yara.
                     endPoint: .top
                                             ))
-                    .foregroundColor(.black)                    // Arkaplan rengi
+                    .foregroundColor(.black)                        // Arkaplan rengi
                     VStack{
-                        Text(content2).font(.largeTitle)             // .font size ayarı
+                        Text(content2).font(.largeTitle)            // .font size ayarı
                         Text("Booo").font(.largeTitle)
                             .foregroundColor(.purple)
                     }
@@ -62,11 +69,11 @@ struct CardView : View {
             }else{
                 ZStack(alignment: .center, content :{
                     RoundedRectangle(cornerRadius: 50)
-                    .foregroundColor(.purple)                    // Burada kullandığımız foregroundColor text gibi cisimleri alır
-                    Text("Hİ").font(.title)                 // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
+                    .foregroundColor(.purple)                      // Burada kullandığımız foregroundColor text gibi cisimleri alır
+                    Text("Hİ").font(.title)                        // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
                     .foregroundColor(.white)
                     .rotationEffect(Angle(degrees: 90))
-                    .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black)) // yazının arka planı düşünülür. ve aynı zaman eğimli
+                    .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black))  // yazının arka planı düşünülür. ve aynı zaman eğimli
                     RoundedRectangle(cornerRadius: 50)
                     .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
                     .foregroundColor(.red)
@@ -82,13 +89,13 @@ struct CardView : View {
 
 struct SecCardView : View {
     let content : String
-   @State var isFaceDown : Bool = false   // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
-    var body: some View {                 // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
+   @State var isFaceDown : Bool = false                           // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
+    var body: some View {                                         // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
         ZStack{
             if isFaceDown {
                 ZStack(alignment: .center, content: {
                     
-                    let base2 = Circle()  // Üst kısım ile arasındaki fark birine direk tanım diğerinde otomatik bırakdık.
+                    let base2 = Circle()                          // Üst kısım ile arasındaki fark birine direk tanım diğerinde otomatik bırakdık.
                     base2.fill(LinearGradient(
                         gradient: Gradient(colors: [.blue ,.blue, .red, .pink, .purple, .white, ]),
                     startPoint: .bottom,
@@ -131,6 +138,6 @@ struct SecCardView : View {
     }
 
 
-#Preview {            // Ön izleme teknik açıdan Canvas
+#Preview {                                                        // Ön izleme teknik açıdan Canvas
     ContentView()
 }
