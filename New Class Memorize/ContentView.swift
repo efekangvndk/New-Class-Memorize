@@ -8,28 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {         //Struck yapı elemanları için kullanırız.
+    
+            ////-----------------------Bu bölge Genel Değişkenler  İçin bölgedir Burada Tanımlarsak Heryerde Kullanırız.-----------------------////
+   
+    let emeji : Array<String> = ["😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻"]
+    @State var  CardCount : Int = 1
+    
     var body: some View {          // body : bir view yaptığımız onun vicudu gibi düşünürüz.
         VStack{
             HStack{
-                
-                let emeji : Array<String> = ["😈", "🎃","🕷️","👻"]
-                
-                /*
-                ForEach(0...4, id : \.self) { index in                  // Bu bölge hatalı ancak video izlendi.
-                 }                                                      //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
-                  */                                                    // Sistem çöktü.
-                    
-                 
 
-                CardView(content2 : emeji[0], isFaceUp: true)           // Tanımladığımız değişkenleri buraya yazdık kısa bir func.
-                CardView(content2 : emeji[1] , isFaceUp:true)
-                SecCardView(content : emeji[2], isFaceDown: true)       // Örneklenmeyi çağaltmak için yaprım.
-                SecCardView(content : emeji[3], isFaceDown: true )
-                
+                ForEach(0...CardCount, id : \.self) { index in          //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
+                    
+                    CardView(content2 : emeji[index])
+                    SecCardView(content : emeji[index])                 // Örneklenmeyi çağaltmak için yaprım.
+                    
+                }
             }
         }
-        
         .foregroundColor(.black)
+       
+        HStack{
+            
+            Button(action: {
+                CardCount += 1
+            }, label: {
+                Text("Add Cards")
+            })
+            .foregroundColor(.green)
+            Spacer()
+            Button(action: {
+                CardCount -= 1
+            }, label: {
+                Text("Remowe Cards")
+            })
+            .foregroundColor(.red)
+        }
+        
         .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))                   // Boşluk bırakmak ve detay.
         
     }
@@ -48,9 +63,9 @@ struct CardView : View {
                 ZStack(alignment: .top, content: {                  // Üstlü altı demek.
                     let base :  RoundedRectangle = RoundedRectangle(cornerRadius: 10)            // Kenear Yuvarlaklığı için
                     base.fill(LinearGradient(                       // Cisimler için (kare daire v.b)içini doldur demek
-                    gradient: Gradient(colors: [.red, .pink, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
-                    startPoint: .bottom,                                                 // Yaparken işimize yara.
-                    endPoint: .top
+                        gradient: Gradient(colors: [.red, .pink, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
+                        startPoint: .bottom,                                                 // Yaparken işimize yara.
+                        endPoint: .top
                                             ))
                     .foregroundColor(.black)                        // Arkaplan rengi
                     VStack{
@@ -58,58 +73,58 @@ struct CardView : View {
                         Text("Booo").font(.largeTitle)
                             .foregroundColor(.purple)
                     }
-                   
+                    
                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.black))
                     RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))     // Açılan küçük çizgi ayarları.
-                    .foregroundColor(.black)
+                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))     // Açılan küçük çizgi ayarları.
+                        .foregroundColor(.black)
                     
                 })
                 
             }else{
                 ZStack(alignment: .center, content :{
                     RoundedRectangle(cornerRadius: 50)
-                    .foregroundColor(.purple)                      // Burada kullandığımız foregroundColor text gibi cisimleri alır
-                    Text("Hİ").font(.title)                        // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
-                    .foregroundColor(.white)
-                    .rotationEffect(Angle(degrees: 90))
-                    .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black))  // yazının arka planı düşünülür. ve aynı zaman eğimli
+                        .foregroundColor(.purple)                      // Burada kullandığımız foregroundColor text gibi cisimleri alır
+                    Text("Hİ").font(.title)                            // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
+                        .foregroundColor(.white)
+                        .rotationEffect(Angle(degrees: 90))
+                        .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black))  // yazının arka planı düşünülür. ve aynı zaman eğimli
                     RoundedRectangle(cornerRadius: 50)
-                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                    .foregroundColor(.red)
+                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
+                        .foregroundColor(.red)
                 })
             }
         }
         .onTapGesture (count : 1, perform: {
             isFaceUp = !isFaceUp
-             print("Tapped")
+            print("Tapped")
         })
     }
 }
 
 struct SecCardView : View {
     let content : String
-   @State var isFaceDown : Bool = false                           // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
-    var body: some View {                                         // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
+    @State var isFaceDown : Bool = false                           // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
+    var body: some View {                                          // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
         ZStack{
             if isFaceDown {
                 ZStack(alignment: .center, content: {
                     
-                    let base2 = Circle()                          // Üst kısım ile arasındaki fark birine direk tanım diğerinde otomatik bırakdık.
+                    let base2 = Circle()                           // Üst kısım ile arasındaki fark birine direk tanım diğerinde otomatik bırakdık.
                     base2.fill(LinearGradient(
                         gradient: Gradient(colors: [.blue ,.blue, .red, .pink, .purple, .white, ]),
-                    startPoint: .bottom,
-                    endPoint: .center
+                        startPoint: .bottom,
+                        endPoint: .center
                     ))
                     
                     .foregroundColor(.black)
                     VStack{
                         Text(content).font(.largeTitle)
-                        .foregroundColor(.black)
+                            .foregroundColor(.black)
                         Text("FEAR :D ")
                     }
                     Circle()
-                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
+                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
                     
                 })
                 
@@ -117,25 +132,25 @@ struct SecCardView : View {
                 
                 ZStack(alignment: .center, content :{
                     Circle()
-                    .foregroundColor(.yellow)
+                        .foregroundColor(.yellow)
                     Text("Heyo").font(.title)
-                    .foregroundColor(.black)
-                    .rotationEffect(Angle(degrees: 45))
-                    .background(RoundedRectangle(cornerRadius: 10))
-                    .foregroundColor(.white)
+                        .foregroundColor(.black)
+                        .rotationEffect(Angle(degrees: 45))
+                        .background(RoundedRectangle(cornerRadius: 10))
+                        .foregroundColor(.white)
                     Circle()
-                    .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
-                    .foregroundColor(.red)
+                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
+                        .foregroundColor(.red)
                     
                 })
             }
         }
         .onTapGesture (count : 1, perform: {
             isFaceDown.toggle()
-             print("Tapped")
-            })
-        }
+            print("Tapped")
+        })
     }
+}
 
 
 #Preview {                                                        // Ön izleme teknik açıdan Canvas
