@@ -15,9 +15,9 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
                 let emeji : Array<String> = ["😈", "🎃","🕷️","👻"]
                 
                 /*
-                ForEach(0...4, id : \.self) { index in                   // Bu bölge hatalı ancak video izlendi.
-                 }                                                       //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
-                  */
+                ForEach(0...4, id : \.self) { index in                  // Bu bölge hatalı ancak video izlendi.
+                 }                                                      //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
+                  */                                                    // Sistem çöktü.
                     
                  
 
