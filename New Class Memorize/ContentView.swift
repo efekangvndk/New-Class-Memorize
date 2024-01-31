@@ -30,34 +30,46 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
         
         HStack{
             
-            Button(action: {
-                
-                if CardCount > 1 {
-                    CardCount -= 1
-                }
-                
-            }, label: {
-                Text("Remowe Cards")
-            })
-            .foregroundColor(.green)
+            cardRemower
             Spacer()
-            Button(action: {
-                
-                if CardCount < emeji.count {
-                    CardCount += 1
-                }
-                
-            }, label: {
-                Text("Add Cards")
-            })
+            cardAdder
             
-            .foregroundColor(.red)
         }
+        
+        
         .font(.largeTitle)
         .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))                   // Boşluk bırakmak ve detay.
         
     }
+    var cardRemower : some View {
+        Button(action: {
+            
+            if CardCount > 1 {
+                CardCount -= 1
+            }
+            
+        }, label: {
+            Text("Remowe Cards")
+        })
+        .foregroundColor(.green)
+    }
+    
+    var cardAdder : some View {
+        Button(action: {
+            
+            if CardCount < emeji.count {
+                CardCount += 1
+            }
+            
+        }, label: {
+            Text("Add Cards")
+        })
+        
+        .foregroundColor(.red)
+    }
+    
 }
+
 
 /// --- Öğrenim herne oluşturduysak onun modifiye için altına uygun methodu yazmak yeterli.
 
