@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ContentView: View {         //Struck yapı elemanları için kullanırız.
     
-            ////-----------------------Bu bölge Genel Değişkenler  İçin bölgedir Burada Tanımlarsak Heryerde Kullanırız.-----------------------////
-   
+    ////-----------------------Bu bölge Genel Değişkenler  İçin bölgedir Burada Tanımlarsak Heryerde Kullanırız.-----------------------////
+    
     let emeji : Array<String> = ["😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻"]
     @State var  CardCount : Int = 1
     
     var body: some View {          // body : bir view yaptığımız onun vicudu gibi düşünürüz.
         VStack{
             HStack{
-
-                ForEach(0...CardCount, id : \.self) { index in          //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
+                
+                ForEach(0..<CardCount, id : \.self) { index in          //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
                     
                     CardView(content2 : emeji[index])
                     SecCardView(content : emeji[index])                 // Örneklenmeyi çağaltmak için yaprım.
@@ -27,24 +27,33 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
             }
         }
         .foregroundColor(.black)
-       
+        
         HStack{
             
             Button(action: {
-                CardCount += 1
+                
+                if CardCount > 1 {
+                    CardCount -= 1
+                }
+                
             }, label: {
-                Text("Add Cards")
+                Text("Remowe Cards")
             })
             .foregroundColor(.green)
             Spacer()
             Button(action: {
-                CardCount -= 1
+                
+                if CardCount < emeji.count {
+                    CardCount += 1
+                }
+                
             }, label: {
-                Text("Remowe Cards")
+                Text("Add Cards")
             })
+            
             .foregroundColor(.red)
         }
-        
+        .font(.largeTitle)
         .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))                   // Boşluk bırakmak ve detay.
         
     }
