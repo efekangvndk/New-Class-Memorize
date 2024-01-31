@@ -7,40 +7,45 @@
 
 import SwiftUI
 
-struct ContentView: View {         //Struck yapı elemanları için kullanırız.
+struct ContentView: View {                                      //Struck yapı elemanları için kullanırız.
     
     ////-----------------------Bu bölge Genel Değişkenler  İçin bölgedir Burada Tanımlarsak Heryerde Kullanırız.-----------------------////
     
     let emeji : Array<String> = ["😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻"]
     @State var  CardCount : Int = 1
     
-    var body: some View {          // body : bir view yaptığımız onun vicudu gibi düşünürüz.
+    var body: some View {                                       // body : bir view yaptığımız onun vicudu gibi düşünürüz.
         VStack{
             HStack{
-                
-                ForEach(0..<CardCount, id : \.self) { index in          //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
-                    
-                    CardView(content2 : emeji[index])
-                    SecCardView(content : emeji[index])                 // Örneklenmeyi çağaltmak için yaprım.
-                    
+                myCards
+               
                 }
+            HStack{
+                
+                cardRemower
+                Spacer()
+                cardAdder
+                
             }
         }
-        .foregroundColor(.black)
         
-        HStack{
-            
-            cardRemower
-            Spacer()
-            cardAdder
-            
-        }
-        
-        
-        .font(.largeTitle)
+  
+        .font(.system(size: 33))
+        .imageScale(.large)
         .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))                   // Boşluk bırakmak ve detay.
         
     }
+    var myCards : some View {
+        ForEach(0..<CardCount, id : \.self) { index in          //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
+            
+            CardView(content2 : emeji[index])
+            SecCardView(content : emeji[index])                 // Örneklenmeyi çağaltmak için yaprım.
+            
+        }
+    }
+    
+    
+    
     var cardRemower : some View {
         Button(action: {
             
@@ -49,7 +54,12 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
             }
             
         }, label: {
-            Text("Remowe Cards")
+           
+            VStack{
+                Text("Remowe Cards")
+                Image(systemName: "minus.square")
+            }
+           
         })
         .foregroundColor(.green)
     }
@@ -62,7 +72,11 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
             }
             
         }, label: {
-            Text("Add Cards")
+            VStack{
+                Text("Add Cards")
+                    Image(systemName: "plus.app")
+            }
+            
         })
         
         .foregroundColor(.red)
@@ -77,20 +91,20 @@ struct ContentView: View {         //Struck yapı elemanları için kullanırız
 
 struct CardView : View {
     let content2 : String
-    @ State var isFaceUp : Bool = false // Bool : true veya false için bir parametredir. Bu şekilde kısa yoldan if else yerine kullanarız.
+    @ State var isFaceUp : Bool = false                           // Bool : true veya false için bir parametredir. Bu şekilde kısa yoldan if else yerine kullanarız.
     var body: some View {
-        ZStack{                                                     // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
-            if isFaceUp {                                           // Bu isFaceUp parametre bize mi dönük yoksa arkası mı dönük anlamındadır.
-                ZStack(alignment: .top, content: {                  // Üstlü altı demek.
+        ZStack{                                                   // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
+            if isFaceUp {                                         // Bu isFaceUp parametre bize mi dönük yoksa arkası mı dönük anlamındadır.
+                ZStack(alignment: .top, content: {                // Üstlü altı demek.
                     let base :  RoundedRectangle = RoundedRectangle(cornerRadius: 10)            // Kenear Yuvarlaklığı için
-                    base.fill(LinearGradient(                       // Cisimler için (kare daire v.b)içini doldur demek
+                    base.fill(LinearGradient(                     // Cisimler için (kare daire v.b)içini doldur demek
                         gradient: Gradient(colors: [.red, .pink, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
                         startPoint: .bottom,                                                 // Yaparken işimize yara.
                         endPoint: .top
                                             ))
-                    .foregroundColor(.black)                        // Arkaplan rengi
+                    .foregroundColor(.black)                      // Arkaplan rengi
                     VStack{
-                        Text(content2).font(.largeTitle)            // .font size ayarı
+                        Text(content2).font(.largeTitle)          // .font size ayarı
                         Text("Booo").font(.largeTitle)
                             .foregroundColor(.purple)
                     }
@@ -105,8 +119,8 @@ struct CardView : View {
             }else{
                 ZStack(alignment: .center, content :{
                     RoundedRectangle(cornerRadius: 50)
-                        .foregroundColor(.purple)                      // Burada kullandığımız foregroundColor text gibi cisimleri alır
-                    Text("Hİ").font(.title)                            // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
+                        .foregroundColor(.purple)                    // Burada kullandığımız foregroundColor text gibi cisimleri alır
+                    Text("Hİ").font(.title)                          // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
                         .foregroundColor(.white)
                         .rotationEffect(Angle(degrees: 90))
                         .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black))  // yazının arka planı düşünülür. ve aynı zaman eğimli
@@ -125,13 +139,13 @@ struct CardView : View {
 
 struct SecCardView : View {
     let content : String
-    @State var isFaceDown : Bool = false                           // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
-    var body: some View {                                          // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
+    @State var isFaceDown : Bool = false                             // Neden State kullandık oluşturduğumuz işlevi kullanılan değişkenin daha sonra da
+    var body: some View {                                            // Biçimlenmesi anlanda getirilebilir demek gibi olur. Örğenğin Swtich aç , kapa gibi.
         ZStack{
             if isFaceDown {
                 ZStack(alignment: .center, content: {
                     
-                    let base2 = Circle()                           // Üst kısım ile arasındaki fark birine direk tanım diğerinde otomatik bırakdık.
+                    let base2 = Circle()                             // Üst kısım ile arasındaki fark birine direk tanım diğerinde otomatik bırakdık.
                     base2.fill(LinearGradient(
                         gradient: Gradient(colors: [.blue ,.blue, .red, .pink, .purple, .white, ]),
                         startPoint: .bottom,
@@ -174,6 +188,6 @@ struct SecCardView : View {
 }
 
 
-#Preview {                                                        // Ön izleme teknik açıdan Canvas
+#Preview {                                                          // Ön izleme teknik açıdan Canvas
     ContentView()
 }
