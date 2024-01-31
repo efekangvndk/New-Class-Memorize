@@ -7,79 +7,82 @@
 
 import SwiftUI
 
-struct ContentView: View {                                      //Struck yapı elemanları için kullanırız.
+struct ContentView: View {                                      // Struck yapı elemanları için kullanırız.
     
     ////-----------------------Bu bölge Genel Değişkenler  İçin bölgedir Burada Tanımlarsak Heryerde Kullanırız.-----------------------////
     
-    let emeji : Array<String> = ["😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻"]
+    let emoji : Array<String> = ["😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻"]
     @State var  CardCount : Int = 1
     
     var body: some View {                                       // body : bir view yaptığımız onun vicudu gibi düşünürüz.
         VStack{
             HStack{
-                myCards
-               
-                }
-            HStack{
-                
-                cardRemower
                 Spacer()
-                cardAdder
+                myCards
                 
+            }
+            Spacer()
+            HStack{
+                Spacer()
+                cardCountAdjester
+                Spacer()
             }
         }
         
-  
+        
         .font(.system(size: 33))
         .imageScale(.large)
         .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))                   // Boşluk bırakmak ve detay.
         
     }
-    var myCards : some View {
-        ForEach(0..<CardCount, id : \.self) { index in          //Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
+    var cardCountAdjester: some View{
+        HStack{
             
-            CardView(content2 : emeji[index])
-            SecCardView(content : emeji[index])                 // Örneklenmeyi çağaltmak için yaprım.
+            cardRemower
+            Spacer()
+            cardAdder
             
         }
     }
+    var myCards : some View {
+        LazyVGrid(columns : [GridItem(.adaptive(minimum: 65))]){
+            ForEach(0..<CardCount, id : \.self) { index in          // Burda 0'dan 4'e kadar demek eğer iki nokta ise dört dahil değil üc ise dahil demektir.
+                
+                CardView(content2 : emoji[index])
+                SecCardView(content : emoji[index])                 // Örneklenmeyi çağaltmak için yaprım.
+                
+            }
+        }
+       
+    }
     
-    
-    
-    var cardRemower : some View {
+    func  cardCountAdjester(by offset : Int, symbol : String) -> some View {
+        /// Yukarıda yazılan kod +1 ve -1 işlemlerini kolaylaştırmak adına bir fonksiyon atama işlemidir.
         Button(action: {
             
-            if CardCount > 1 {
-                CardCount -= 1
-            }
+            CardCount += offset
             
         }, label: {
-           
+            
             VStack{
-                Text("Remowe Cards")
-                Image(systemName: "minus.square")
+                
+                Image(systemName: symbol)
             }
-           
+            
         })
-        .foregroundColor(.green)
+        .disabled(CardCount + offset < 1 || CardCount + offset > emoji.count )
+    }
+    
+    var cardRemower : some View {
+        cardCountAdjester(by: -1, symbol: "minus.square")
+          
+        
+        
     }
     
     var cardAdder : some View {
-        Button(action: {
-            
-            if CardCount < emeji.count {
-                CardCount += 1
-            }
-            
-        }, label: {
-            VStack{
-                Text("Add Cards")
-                    Image(systemName: "plus.app")
-            }
-            
-        })
-        
-        .foregroundColor(.red)
+        cardCountAdjester(by: +1, symbol: "plus.app")
+            .foregroundColor(.green)
     }
     
 }
