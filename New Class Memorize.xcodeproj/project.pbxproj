@@ -11,6 +11,7 @@
 		AB9AB62C2B34B7EA009DFAC7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9AB62B2B34B7EA009DFAC7 /* ContentView.swift */; };
 		AB9AB62E2B34B7EC009DFAC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9AB62D2B34B7EC009DFAC7 /* Assets.xcassets */; };
 		AB9AB6312B34B7EC009DFAC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9AB6302B34B7EC009DFAC7 /* Preview Assets.xcassets */; };
+		ABB3FB462B6B9CBD000BE821 /* MemorizeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3FB452B6B9CBD000BE821 /* MemorizeGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		AB9AB62B2B34B7EA009DFAC7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AB9AB62D2B34B7EC009DFAC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB9AB6302B34B7EC009DFAC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ABB3FB452B6B9CBD000BE821 /* MemorizeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		AB9AB6282B34B7EA009DFAC7 /* New Class Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				ABB3FB452B6B9CBD000BE821 /* MemorizeGame.swift */,
 				AB9AB6292B34B7EA009DFAC7 /* New_Class_MemorizeApp.swift */,
 				AB9AB62B2B34B7EA009DFAC7 /* ContentView.swift */,
 				AB9AB62D2B34B7EC009DFAC7 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			files = (
 				AB9AB62C2B34B7EA009DFAC7 /* ContentView.swift in Sources */,
 				AB9AB62A2B34B7EA009DFAC7 /* New_Class_MemorizeApp.swift in Sources */,
+				ABB3FB462B6B9CBD000BE821 /* MemorizeGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
