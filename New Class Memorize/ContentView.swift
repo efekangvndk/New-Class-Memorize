@@ -107,6 +107,7 @@ struct CardView : View {
                                             ))
                     .foregroundColor(.black)                      // Arkaplan rengi
                     VStack{
+                       
                         Text(content2).font(.largeTitle)          // .font size ayarı
                         Text("Booo").font(.largeTitle)
                             .foregroundColor(.purple)
@@ -121,6 +122,7 @@ struct CardView : View {
                 
             }else{
                 ZStack(alignment: .center, content :{
+                    
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundColor(.purple)                    // Burada kullandığımız foregroundColor text gibi cisimleri alır
                     Text("Hİ").font(.title)                          // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
@@ -159,7 +161,8 @@ struct SecCardView : View {
                     VStack{
                         Text(content).font(.largeTitle)
                             .foregroundColor(.black)
-                        Text("FEAR :D ")
+                        Text("FEAR")
+                            .font(.title3)
                     }
                     Circle()
                         .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
