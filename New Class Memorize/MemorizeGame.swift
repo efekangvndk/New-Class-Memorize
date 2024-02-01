@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct MemoryGame {
+struct MemoryGame<cardContent> {    // Bir yapı oluşturduk ve adını hafıza oyunu koyduk ancak yanına kendi tanımıızı koyduk cardContent
+                                    // Bu tanım ile kendimze bir any , some , string v.b. bir yapı yaptık.
+    var cards : Array<Card>         // Burda Bir değişken yapıp Bir Dizi oluşturduk. cards değişkeni içinde Card dizisi
     
-    var cards : Array<Cards>
-    
-    func choose(card:Cards){
+    func choose(card:Card){         // Burda İstenilen işlemi yani seçme işlemini func olarak yaptık ki çalışsın.
         
     }
-    struct Cards{
-        
+    struct Card{                    // Bir adet daha yapı yaptık ve bu yapı içine değişkenleri ve işlemleri tanımladık isFaceUp gibi.
+        var isFaceUp: Bool
+        var isMatched: Bool
+        var content: cardContent    // Seçilen contentin ne olduğu önemli olmadığından oluşturduğumuz yeni class'ı kullandık. Aslında Dont Care kullandık. 
     }
 }
