@@ -14,7 +14,7 @@ class EmojisMemoryGame {
         return model.cards
     }
     func choose(card: MemoryGame<String>.Card){
-        model.choose(card: card)
+        model.choose(card: card) 
     }
 }
 
