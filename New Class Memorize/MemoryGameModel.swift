@@ -15,7 +15,7 @@ struct MemoryGame<cardContent> {    // Bir yapı oluşturduk ve adını hafıza 
     // Hemen yukarda bir private(set) işlemi var burda set işlemi privattden aksine okunabilirlik herkese açık ancak kullanılım sadece kapsama kişileri için oldunu söylemekde.
     
     
-    func choose(card:Card){         // Burda İstenilen işlemi yani seçme işlemini func olarak yaptık ki çalışsın.
+    func choose(card : Card){         // Burda İstenilen işlemi yani seçme işlemini func olarak yaptık ki çalışsın.
     }
     struct Card{                    // Bir adet daha yapı yaptık ve bu yapı içine değişkenleri ve işlemleri tanımladık isFaceUp gibi.
         var isFaceUp: Bool
