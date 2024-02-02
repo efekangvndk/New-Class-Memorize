@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct New_Class_MemorizeApp: App {
     var body: some Scene {
-        WindowGroup {
+        WindowGroup { 
             ContentView()
         }
     }

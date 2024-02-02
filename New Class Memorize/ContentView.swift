@@ -4,10 +4,14 @@
 //
 //  Created by Efekan Güvendik on 21.12.2023.
 //
+                                                                    ///----------View----------///
 
 import SwiftUI
 
 struct ContentView: View {                                      // Struck yapı elemanları için kullanırız.
+    
+    var ViewModel : EmojisMemoryGame                            // View tanımladık ve bunu haberleşmesi için oluşturduk. 
+    
     
     ////-----------------------Bu bölge Genel Değişkenler  İçin bölgedir Burada Tanımlarsak Heryerde Kullanırız.-----------------------////
     

@@ -5,6 +5,8 @@
 //  Created by Efekan Güvendik on 1.02.2024.
 //
 
+
+                                                        ///----------Model----------///
 import Foundation
 
 struct MemoryGame<cardContent> {    // Bir yapı oluşturduk ve adını hafıza oyunu koyduk ancak yanına kendi tanımıızı koyduk cardContent
