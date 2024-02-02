@@ -11,7 +11,7 @@ struct ContentView: View {                                      // Struck yapı 
     
     ////-----------------------Bu bölge Genel Değişkenler  İçin bölgedir Burada Tanımlarsak Heryerde Kullanırız.-----------------------////
     
-    let emoji : Array<String> = ["😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻","😈", "🎃","🕷️","👻"]
+    let emoji : Array<String> = ["😈", "🎃","🕷️","👻","💀","👺","🤖","👹","👽"]
     @State var  CardCount : Int = 1
     
     var body: some View {                                       // body : bir view yaptığımız onun vicudu gibi düşünürüz.
@@ -53,7 +53,7 @@ struct ContentView: View {                                      // Struck yapı 
                 
             }
         }
-       
+        
     }
     
     func  cardCountAdjester(by offset : Int, symbol : String) -> some View {
@@ -75,7 +75,7 @@ struct ContentView: View {                                      // Struck yapı 
     
     var cardRemower : some View {
         cardCountAdjester(by: -1, symbol: "minus.square")
-          
+        
         
         
     }
@@ -99,25 +99,26 @@ struct CardView : View {
         ZStack{                                                   // İç İçe demek   <----------->   Ek olarak Hstack de yan yana demek.
             if isFaceUp {                                         // Bu isFaceUp parametre bize mi dönük yoksa arkası mı dönük anlamındadır.
                 ZStack(alignment: .top, content: {                // Üstlü altı demek.
-                    let base :  RoundedRectangle = RoundedRectangle(cornerRadius: 10)            // Kenear Yuvarlaklığı için
+                    
+                    let base :  RoundedRectangle = RoundedRectangle(cornerRadius: 50)            // Kenear Yuvarlaklığı için
                     base.fill(LinearGradient(                     // Cisimler için (kare daire v.b)içini doldur demek
-                        gradient: Gradient(colors: [.red, .pink, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
+                        gradient: Gradient(colors: [.red, .green, .purple,.white, .white, ]), // Bir alanın türevi anlamında gelir hafif geçiş
                         startPoint: .bottom,                                                 // Yaparken işimize yara.
                         endPoint: .top
+                        
                                             ))
-                    .foregroundColor(.black)                      // Arkaplan rengi
+                    Circle()
+                        .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))
+                        .foregroundColor(.black)                      // Arkaplan rengi
                     VStack{
-                       
                         Text(content2).font(.largeTitle)          // .font size ayarı
-                        Text("Booo").font(.largeTitle)
-                            .foregroundColor(.purple)
+                        Text("bo").font(.title3)
+                            .foregroundColor(.black)
+                        
                     }
-                    
-                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.black))
-                    RoundedRectangle(cornerRadius: 10)
+                    Circle()
                         .strokeBorder(style : StrokeStyle (lineWidth: 5, dash: [10,1] ))     // Açılan küçük çizgi ayarları.
-                        .foregroundColor(.black)
-                    
+                        .foregroundColor(.blue)
                 })
                 
             }else{
@@ -157,7 +158,7 @@ struct SecCardView : View {
                         endPoint: .center
                     ))
                     
-                    .foregroundColor(.black)
+                    
                     VStack{
                         Text(content).font(.largeTitle)
                             .foregroundColor(.black)
