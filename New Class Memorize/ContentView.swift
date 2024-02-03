@@ -130,7 +130,7 @@ struct CardView : View {
                     
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundColor(.purple)                    // Burada kullandığımız foregroundColor text gibi cisimleri alır
-                    Text("Hİi").font(.title)                          // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
+                    Text("HİHi").font(.title)                          // Bunun yerine backGrounc kullanırsak direk arka plana demiş olur.
                         .foregroundColor(.white)
                         .rotationEffect(Angle(degrees: 90))
                         .background(RoundedRectangle(cornerRadius: 100).foregroundColor(.black))  // yazının arka planı düşünülür. ve aynı zaman eğimli
