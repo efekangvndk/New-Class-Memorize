@@ -9,9 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {                                      // Struck yapı elemanları için kullanırız.
-    class EmojisMemory{
-        
-    }
+    
     var ViewModel : EmojisMemoryGame                            // View tanımladık ve bunu haberleşmesi için oluşturduk.
     
     
