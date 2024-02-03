@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {                                      // Struck yapı elemanları için kullanırız.
-    
-    var ViewModel : EmojisMemoryGame                            // View tanımladık ve bunu haberleşmesi için oluşturduk. 
+    class EmojisMemory{
+        
+    }
+    var ViewModel : EmojisMemoryGame                            // View tanımladık ve bunu haberleşmesi için oluşturduk.
     
     
     ////-----------------------Bu bölge Genel Değişkenler  İçin bölgedir Burada Tanımlarsak Heryerde Kullanırız.-----------------------////
@@ -166,7 +168,7 @@ struct SecCardView : View {
                     VStack{
                         Text(content).font(.largeTitle)
                             .foregroundColor(.black)
-                        Text("FEAR")
+                        Text("HOO")
                             .font(.title3)
                     }
                     Circle()
