@@ -116,7 +116,7 @@ struct CardView : View {
                         .foregroundColor(.black)                      // Arkaplan rengi
                     VStack{
                         Text(content2).font(.largeTitle)          // .font size ayarı
-                        Text("boo").font(.title3)
+                        Text("boıo").font(.title3)
                             .foregroundColor(.black)
                         
                     }
