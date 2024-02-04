@@ -5,7 +5,7 @@
 //  Created by Efekan Güvendik on 1.02.2024.
 //
                                                          ///----------View Model----------///
-
+/*
 import SwiftUI
 
 class EmojisMemoryGame {
@@ -17,4 +17,4 @@ class EmojisMemoryGame {
         model.choose(card:card)
     }
 }
-
+*/
