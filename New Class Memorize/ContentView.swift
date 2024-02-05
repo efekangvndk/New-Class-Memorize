@@ -166,7 +166,7 @@ struct SecCardView : View {
                     VStack{
                         Text(content).font(.largeTitle)
                             .foregroundColor(.black)
-                        Text("OHO")
+                        Text("OhO")
                             .font(.title3)
                     }
                     Circle()
@@ -179,7 +179,7 @@ struct SecCardView : View {
                 ZStack(alignment: .center, content :{
                     Circle()
                         .foregroundColor(.yellow)
-                    Text("Heyo").font(.title)
+                    Text("Heoo").font(.title)
                         .foregroundColor(.black)
                         .rotationEffect(Angle(degrees: 45))
                         .background(RoundedRectangle(cornerRadius: 10))
