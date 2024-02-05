@@ -142,7 +142,7 @@ struct CardView : View {
         }
         .onTapGesture (count : 1, perform: {
             isFaceUp = !isFaceUp
-            print("Tapped")
+            print("Taped")
         })
     }
 }
@@ -166,7 +166,7 @@ struct SecCardView : View {
                     VStack{
                         Text(content).font(.largeTitle)
                             .foregroundColor(.black)
-                        Text("HOO")
+                        Text("OHO")
                             .font(.title3)
                     }
                     Circle()
@@ -193,7 +193,7 @@ struct SecCardView : View {
         }
         .onTapGesture (count : 1, perform: {
             isFaceDown.toggle()
-            print("Tapped")
+            print("Taped")
         })
     }
 }
